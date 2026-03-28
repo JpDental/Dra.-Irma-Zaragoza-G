@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Irma Zaragoza | Especialista en Prótesis Maxilofacial y Endodoncia</title>
+    
+    <!-- Fuentes Google Fonts: Playfair Display (Elegancia) y Lato (Modernidad) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Framework para diseño rápido y responsive) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración de Colores Personalizados -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dental-gold': '#C5A059',
+                        'dental-gold-light': '#E5C585',
+                        'dental-purple': '#F3F0F8',
+                        'dental-purple-dark': '#4A3B69',
+                        'dental-coffee': '#8C7B70',
+                        'dental-white': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos base y animaciones suaves */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #FAFAFA;
+            color: #333;
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .image-hover {
+            transition: transform 0.5s ease;
+        }
+        .card-hover:hover .image-hover {
+            transform: scale(1.05);
+        }
+        /* Botón Flotante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 30px;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+        }
+
+        /* --- ESTILOS DEL NUEVO SISTEMA DE RESERVAS (Adaptados al diseño de la Clínica) --- */
+        .booking-section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #4A3B69;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Lato', sans-serif;
+        }
+        .booking-section-title i {
+            margin-right: 10px;
+            font-size: 20px;
+            color: #C5A059;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .form-row.two-cols {
+            grid-template-columns: 1fr 1fr;
+        }
+        .form-group {
+            position: relative;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #6b7280;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #C5A059;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+        }
+        .form-input.has-icon {
+            padding-left: 45px;
+        }
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #C5A059;
+        }
+        .form-help {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+        .calendar-trigger {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            font-size: 15px;
+            background: #f9fafb;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            color: #6b7280;
+        }
+        .calendar-trigger:hover {
+            border-color: #C5A059;
+            background: white;
+        }
+        .calendar-trigger.selected {
+            background: white;
+            border-color: #4A3B69;
+            color: #4A3B69;
+            font-weight: 700;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .calendar-modal {
+            background: white;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+        .calendar-header {
+            background: linear-gradient(135deg, #4A3B69 0%, #C5A059 100%);
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+        }
+        .calendar-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .close-modal {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+        .calendar-body { padding: 25px; }
+        .month-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #F3F0F8;
+            border-radius: 8px;
+        }
+        .month-navigation button {
+            background: #4A3B69;
+            border: none;
+            color: white;
+            width: 35px; height: 35px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .month-navigation button:hover { transform: scale(1.1); }
+        .month-navigation button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+        .current-month { font-size: 18px; font-weight: 700; color: #4A3B69; }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+        .day-header {
+            text-align: center; font-weight: 700; font-size: 12px; color: #8C7B70; padding: 10px 0; text-transform: uppercase;
+        }
+        .calendar-day {
+            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+            border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+            transition: all 0.2s ease; border: 2px solid transparent; position: relative;
+        }
+        .calendar-day.empty { cursor: default; opacity: 0; }
+        .calendar-day.past { color: #d1d5db; cursor: not-allowed; background: #f9fafb; }
+        .calendar-day.weekend { background: #fee; color: #dc2626; cursor: not-allowed; }
+        .calendar-day.available { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+        .calendar-day.available:hover { background: #dcfce7; transform: scale(1.05); }
+        .calendar-day.partial { background: #fffbeb; color: #d97706; border-color: #fed7aa; }
+        .calendar-day.partial:hover { background: #fef3c7; transform: scale(1.05); }
+        .calendar-day.busy { background: #fef2f2; color: #dc2626; cursor: not-allowed; }
+        .calendar-day.selected { background: #C5A059; color: white; transform: scale(1.05); box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4); }
+        .calendar-loading { display: none; text-align: center; padding: 20px; color: #6b7280; }
+        .calendar-loading.active { display: block; }
+        .calendar-legend {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px;
+            padding: 15px; background: #F3F0F8; border-radius: 8px;
+        }
+        .legend-item { display: flex; align-items: center; font-size: 12px; color: #6b7280; }
+        .legend-color { width: 20px; height: 20px; border-radius: 4px; margin-right: 8px; border: 2px solid transparent; }
+        .legend-color.available { background: #f0fdf4; border-color: #bbf7d0; }
+        .legend-color.partial { background: #fffbeb; border-color: #fed7aa; }
+        .legend-color.busy { background: #fef2f2; border-color: #fca5a5; }
+        .legend-color.weekend { background: #fee; border-color: #fca5a5; }
+        
+        .time-selector { position: relative; }
+        .time-display {
+            width: 100%; padding: 12px 15px; border: 1px solid #e5e7eb; border-radius: 4px;
+            font-size: 15px; background: #f9fafb; cursor: pointer; display: flex;
+            justify-content: space-between; align-items: center; transition: all 0.3s ease; user-select: none;
+        }
+        .time-display:hover { border-color: #C5A059; background: white; }
+        .time-display.active { border-color: #C5A059; background: white; box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1); }
+        .time-display.disabled { opacity: 0.5; cursor: not-allowed; }
+        .time-dropdown {
+            position: absolute; top: 100%; left: 0; right: 0; background: white;
+            border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000; max-height: 280px; overflow-y: auto; margin-top: 5px;
+            opacity: 0; transform: translateY(-10px); visibility: hidden; transition: all 0.3s ease;
+        }
+        .time-dropdown.open { opacity: 1; transform: translateY(0); visibility: visible; }
+        .time-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; padding: 10px; }
+        .time-option {
+            padding: 8px; cursor: pointer; transition: all 0.2s ease; text-align: center;
+            border-radius: 4px; font-size: 13px; font-weight: 600; color: #4A3B69;
+            background: #F3F0F8; border: 1px solid transparent;
+        }
+        .time-option:hover { background: white; border-color: #C5A059; }
+        .time-option.selected { background: #C5A059; color: white; transform: scale(0.95); }
+        .time-option.occupied { background: #fef2f2; color: #dc2626; cursor: not-allowed; text-decoration: line-through; opacity: 0.6; }
+        .period-label {
+            grid-column: 1 / -1; padding: 8px 12px; font-weight: 700; font-size: 11px;
+            text-transform: uppercase; color: #C5A059; text-align: center; margin: 5px 0;
+            background: #FAFAFA; border-radius: 4px; border: 1px solid #e5e7eb;
+        }
+        
+        .status-alert {
+            padding: 15px; border-radius: 4px; margin-bottom: 20px; display: flex;
+            align-items: center; font-weight: 600; opacity: 0; transform: translateY(-10px);
+            transition: all 0.3s ease; font-size: 14px; display: none;
+        }
+        .status-alert.show { opacity: 1; transform: translateY(0); display: flex; }
+        .status-alert i { margin-right: 10px; font-size: 16px; }
+        .status-alert.loading { background: #F3F0F8; color: #4A3B69; border: 1px solid #d1c4e9; }
+        .status-alert.success { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+        .status-alert.warning { background: #fffbeb; color: #d97706; border: 1px solid #fed7aa; }
+        .status-alert.error { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; }
+
+        .submit-btn {
+            width: 100%; padding: 16px; border: none; border-radius: 4px; font-size: 14px;
+            font-weight: 700; color: white; cursor: pointer; transition: all 0.3s ease;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            background: #4A3B69;
+            box-shadow: 0 4px 15px rgba(74, 59, 105, 0.3);
+        }
+        .submit-btn:hover { background: #C5A059; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(197, 160, 89, 0.4); }
+        .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-spinner { animation: spin 1s linear infinite; margin-right: 10px; }
+
+        @media (max-width: 768px) {
+            .form-row.two-cols { grid-template-columns: 1fr; }
+            .time-grid { grid-template-columns: 1fr 1fr; }
+            .calendar-modal { max-width: 95%; }
+            .calendar-legend { grid-template-columns: 1fr; }
+        }
+    </style>
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl text-dental-purple-dark font-bold tracking-wider">
+                        DRA. <span class="text-dental-gold"> IRMA ZARAGOZA</span>
+                    </a>
+                </div>
+                
+                <!-- Menú Desktop -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-gray-600 hover:text-dental-gold transition duration-300 uppercase text-xs tracking-widest font-bold">Inicio</a>
+                    <a href="#doctora" class="text-gray-600 hover:text-dental-gold transition duration-300 uppercase text-xs tracking-widest font-bold">Doctora</a>
+                    <a href="#filosofia" class="text-gray-600 hover:text-dental-gold transition duration-300 uppercase text-xs tracking-widest font-bold">Filosofía</a>
+                    <a href="#tratamientos" class="text-gray-600 hover:text-dental-gold transition duration-300 uppercase text-xs tracking-widest font-bold">Tratamientos</a>
+                    <a href="#galeria" class="text-gray-600 hover:text-dental-gold transition duration-300 uppercase text-xs tracking-widest font-bold">Galería</a>
+                    <a href="#contacto" class="bg-dental-gold text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition duration-300 uppercase text-xs tracking-widest font-bold shadow-lg">Contactar</a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-dental-gold focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menú Móvil (Oculto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <a href="#inicio" class="block px-3 py-2 text-gray-600 hover:text-dental-gold">Inicio</a>
+                <a href="#doctora" class="block px-3 py-2 text-gray-600 hover:text-dental-gold">Doctora</a>
+                <a href="#filosofia" class="block px-3 py-2 text-gray-600 hover:text-dental-gold">Filosofía</a>
+                <a href="#tratamientos" class="block px-3 py-2 text-gray-600 hover:text-dental-gold">Tratamientos</a>
+                <a href="#contacto" class="block px-3 py-2 text-dental-gold font-bold">Agendar Cita</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative pt-24 pb-12 lg:pt-32 lg:pb-24 overflow-hidden bg-dental-purple">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Texto Hero -->
+                <div class="fade-in-up z-10 order-2 lg:order-1 text-center lg:text-left">
+                    <span class="text-dental-gold font-bold tracking-[0.2em] uppercase text-sm mb-4 block">Odontología de Alta Especialidad</span>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-dental-purple-dark leading-tight mb-6">
+                        Arte y Belleza <br> <span class="italic text-dental-coffee">en tu Sonrisa</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-8 font-light max-w-lg mx-auto lg:mx-0">
+                        Especialista en Prótesis Maxilofacial y Endodoncia. Restauramos la estética y función con tecnología avanzada y un trato humano excepcional.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contacto" class="bg-dental-gold-light text-dental-purple-dark px-8 py-3 rounded-none hover:bg-dental-gold hover:text-white transition duration-300 font-serif italic text-lg shadow-md text-center">
+                            Agendar Consulta
+                        </a>
+                        <a href="#tratamientos" class="border border-dental-coffee text-dental-coffee px-8 py-3 rounded-none hover:bg-dental-coffee hover:text-white transition duration-300 font-sans uppercase text-xs tracking-widest flex items-center justify-center">
+                            Ver Tratamientos
+                        </a>
+                    </div>
+                </div>
+                <!-- Imagen Hero (Doctora) -->
+                <div class="relative order-1 lg:order-2">
+                    <div class="absolute inset-0 bg-dental-gold opacity-10 rounded-full blur-3xl transform translate-x-10 translate-y-10"></div>
+                    <!-- IMAGEN REEMPLAZADA 1 -->
+                    <img src="6f35e014-2f44-4eaa-a18e-80c950bfea49.jpg" alt="Dra. Irma Zaragoza" class="relative z-10 w-full h-auto rounded-lg shadow-2xl object-cover transform hover:scale-[1.01] transition duration-500 fade-in-up border-b-8 border-dental-gold">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE LA DOCTORA -->
+    <section id="doctora" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="w-20 h-1 bg-dental-gold mx-auto mb-8"></div>
+            <h2 class="font-serif text-3xl md:text-4xl text-dental-purple-dark mb-6">Dra. Irma Zaragoza González</h2>
+            <p class="text-xl text-dental-coffee italic mb-8 font-serif">"La Sonrisa que Proyecta tu Éxito."</p>
+            <p class="text-gray-600 leading-relaxed mb-8">
+                Médico egresada de la prestigiosa <strong>Universidad de Guadalajara (2007)</strong>. Con una sólida trayectoria y pasión por la perfección, la Dra. Zaragoza combina la precisión de la endodoncia con el arte de la prótesis maxilofacial. Su clínica ofrece un refugio de calma y profesionalismo donde cada paciente es tratado con los más altos estándares de calidad.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                <div class="p-4 border border-gray-100 rounded-lg hover:shadow-lg transition">
+                    <i class="fas fa-graduation-cap text-3xl text-dental-gold mb-2"></i>
+                    <h3 class="font-bold text-sm uppercase">Egresada UdeG</h3>
+                    <p class="text-xs text-gray-500">Generación 2007</p>
+                </div>
+                <div class="p-4 border border-gray-100 rounded-lg hover:shadow-lg transition">
+                    <i class="fas fa-tooth text-3xl text-dental-gold mb-2"></i>
+                    <h3 class="font-bold text-sm uppercase">Endodoncia</h3>
+                    <p class="text-xs text-gray-500">Especialidad</p>
+                </div>
+                <div class="p-4 border border-gray-100 rounded-lg hover:shadow-lg transition">
+                    <i class="fas fa-mask text-3xl text-dental-gold mb-2"></i>
+                    <h3 class="font-bold text-sm uppercase">Maxilofacial</h3>
+                    <p class="text-xs text-gray-500">Prótesis</p>
+                </div>
+                <div class="p-4 border border-gray-100 rounded-lg hover:shadow-lg transition">
+                    <i class="fas fa-star text-3xl text-dental-gold mb-2"></i>
+                    <h3 class="font-bold text-sm uppercase">Experiencia</h3>
+                    <p class="text-xs text-gray-500">+15 Años</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISIÓN, VISIÓN Y VALORES -->
+    <section id="filosofia" class="py-20 bg-gray-50 border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl text-dental-purple-dark mb-4">Nuestra Filosofía</h2>
+                <div class="w-20 h-1 bg-dental-gold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+                <!-- Misión -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border-l-4 border-dental-gold">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-dental-purple p-3 rounded-full mr-4">
+                            <i class="fas fa-bullseye text-2xl text-dental-gold"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl text-dental-purple-dark font-bold">Misión</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Brindar servicios odontológicos integrales de excelencia, enfocados en la salud, estética y bienestar de nuestros pacientes, mediante tratamientos personalizados, tecnología de vanguardia y un equipo profesional comprometido con la calidad y el trato humano.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        En la Clínica Dental Dra. Irma Zaragoza González trabajamos con dedicación y precisión para ofrecer sonrisas saludables, naturales y armónicas, garantizando confianza, seguridad y una experiencia confortable en cada visita.
+                    </p>
+                </div>
+
+                <!-- Visión -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border-l-4 border-dental-gold">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-dental-purple p-3 rounded-full mr-4">
+                            <i class="fas fa-eye text-2xl text-dental-gold"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl text-dental-purple-dark font-bold">Visión</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Consolidarnos como una clínica dental de referencia en calidad, innovación y atención personalizada, reconocida por la excelencia en nuestros tratamientos y por generar confianza en cada paciente.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Aspiramos a ser un espacio donde la salud, la estética dental y la tecnología moderna se integren para transform sonrisas y mejorar la calidad de vida de quienes confían en nosotros.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Valores -->
+            <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-center mb-10">
+                    <h3 class="font-serif text-2xl text-dental-purple-dark font-bold mb-2">Nuestros Valores</h3>
+                    <p class="text-gray-500">Los pilares que fundamentan nuestra práctica diaria.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Valor 1 -->
+                    <div class="flex items-start">
+                        <i class="fas fa-gem text-dental-gold text-xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 uppercase text-sm tracking-wider mb-1">Excelencia</h4>
+                            <p class="text-sm text-gray-600">Buscamos la perfección en cada tratamiento, cuidando cada detalle para ofrecer resultados de alta calidad.</p>
+                        </div>
+                    </div>
+                    <!-- Valor 2 -->
+                    <div class="flex items-start">
+                        <i class="fas fa-balance-scale text-dental-gold text-xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 uppercase text-sm tracking-wider mb-1">Ética Profesional</h4>
+                            <p class="text-sm text-gray-600">Actuamos con honestidad, transparencia y responsabilidad en cada diagnóstico y procedimiento.</p>
+                        </div>
+                    </div>
+                    <!-- Valor 3 -->
+                    <div class="flex items-start">
+                        <i class="fas fa-user-md text-dental-gold text-xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 uppercase text-sm tracking-wider mb-1">Compromiso</h4>
+                            <p class="text-sm text-gray-600">Nuestro principal objetivo es la salud, comodidad y satisfacción de cada persona que nos visita.</p>
+                        </div>
+                    </div>
+                    <!-- Valor 4 -->
+                    <div class="flex items-start">
+                        <i class="fas fa-lightbulb text-dental-gold text-xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 uppercase text-sm tracking-wider mb-1">Innovación</h4>
+                            <p class="text-sm text-gray-600">Incorporamos tecnología avanzada y técnicas modernas para ofrecer tratamientos más eficaces y seguros.</p>
+                        </div>
+                    </div>
+                    <!-- Valor 5 -->
+                    <div class="flex items-start">
+                        <i class="fas fa-hands-helping text-dental-gold text-xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 uppercase text-sm tracking-wider mb-1">Empatía</h4>
+                            <p class="text-sm text-gray-600">Brindamos un trato cálido, humano y respetuoso, entendiendo las necesidades de cada paciente.</p>
+                        </div>
+                    </div>
+                    <!-- Valor 6 -->
+                    <div class="flex items-start">
+                        <i class="fas fa-shield-check text-dental-gold text-xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 uppercase text-sm tracking-wider mb-1">Confianza</h4>
+                            <p class="text-sm text-gray-600">Construimos relaciones duraderas basadas en la seguridad, la atención personalizada y la calidad de nuestros servicios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRATAMIENTOS (GRID PRINCIPAL) -->
+    <section id="tratamientos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl text-dental-purple-dark mb-4">Nuestros Tratamientos</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Procedimientos de vanguardia para restaurar su salud, estética y confianza.</p>
+            </div>
+
+            <!-- Grid de Servicios -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card: Endodoncia -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover group border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- IMAGEN REEMPLAZADA 2 -->
+                        <img src="Imagen 4 PNG.png" alt="Endodoncia Moderna" class="w-full h-full object-cover image-hover">
+                        <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-dental-purple-dark font-bold mb-2">Endodoncia Avanzada</h3>
+                        <p class="text-sm text-gray-600 mb-4">Tratamiento de conductos con precisión digital para salvar sus dientes naturales sin dolor.</p>
+                        <a href="#contacto" class="text-dental-gold text-xs font-bold uppercase tracking-widest hover:underline">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Card: Carillas / Estética -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover group border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- IMAGEN REEMPLAZADA 3 -->
+                        <img src="Imagen 3 PNG.png" alt="Carillas de Porcelana" class="w-full h-full object-cover image-hover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-dental-purple-dark font-bold mb-2">Diseño de Sonrisa</h3>
+                        <p class="text-sm text-gray-600 mb-4">Carillas de porcelana y resinas de alta estética para una sonrisa radiante y natural.</p>
+                        <a href="#contacto" class="text-dental-gold text-xs font-bold uppercase tracking-widest hover:underline">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Card: Prótesis Ocular -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover group border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- IMAGEN REEMPLAZADA 4 -->
+                        <img src="Imagen 9 Pgn.png" alt="Prótesis Ocular" class="w-full h-full object-cover image-hover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-dental-purple-dark font-bold mb-2">Prótesis Ocular</h3>
+                        <p class="text-sm text-gray-600 mb-4">Restauración estética del globo ocular con realismo extremo y comodidad absoluta.</p>
+                        <a href="#contacto" class="text-dental-gold text-xs font-bold uppercase tracking-widest hover:underline">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Card: Prótesis Auricular -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover group border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- IMAGEN REEMPLAZADA 5 -->
+                        <img src="Imagen 10 Pgn.png" alt="Prótesis Auricular" class="w-full h-full object-cover image-hover">
+                    </div>
+                    <div class="">
+                        <h3 class="font-serif text-xl text-dental-purple-dark font-bold mb-2">Prótesis Auricular</h3>
+                        <p class="text-sm text-gray-600 mb-4">Reconstrucción protésica del pabellón auricular adaptada a la anatomía del paciente.</p>
+                        <a href="#contacto" class="text-dental-gold text-xs font-bold uppercase tracking-widest hover:underline">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Card: Prótesis Nasal -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover group border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- IMAGEN REEMPLAZADA 6 -->
+                        <img src="Imagen 11 png.png" alt="Prótesis Nasal" class="w-full h-full object-cover image-hover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-dental-purple-dark font-bold mb-2">Prótesis Nasal</h3>
+                        <p class="text-sm text-gray-600 mb-4">Soluciones estéticas nasales personalizadas para recuperar la armonía facial.</p>
+                        <a href="#contacto" class="text-dental-gold text-xs font-bold uppercase tracking-widest hover:underline">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Card: Obturadores / Prótesis Especiales -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover group border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- IMAGEN REEMPLAZADA 7 -->
+                        <img src="Imagen 12 png.png" alt="Obturadores Quirúrgicos" class="w-full h-full object-cover image-hover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-dental-purple-dark font-bold mb-2">Obturadores Quirúrgicos</h3>
+                        <p class="text-sm text-gray-600 mb-4">Dispositivos intraorales especializados para rehabilitación maxilofacial funcional.</p>
+                        <a href="#contacto" class="text-dental-gold text-xs font-bold uppercase tracking-widest hover:underline">Más información</a>
+                    </div>
+                </div>
+
+                 <!-- Card: Prótesis Dental Removible/Fija -->
+                 <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover group border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- IMAGEN REEMPLAZADA 8 -->
+                        <img src="Imagen 6 PGN.png" alt="Prótesis Dental" class="w-full h-full object-cover image-hover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-dental-purple-dark font-bold mb-2">Prótesis Dental</h3>
+                        <p class="text-sm text-gray-600 mb-4">Rehabilitación oral completa con prótesis fijas y removibles de aspecto natural.</p>
+                        <a href="#contacto" class="text-dental-gold text-xs font-bold uppercase tracking-widest hover:underline">Más información</a>
+                    </div>
+                </div>
+
+                 <!-- Card: Limpieza y General -->
+                 <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover group md:col-span-2 border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- IMAGEN REEMPLAZADA 9 -->
+                        <img src="Imagen 7 jpg.jpg" alt="Limpieza Dental" class="w-full h-full object-cover image-hover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-dental-purple-dark font-bold mb-2">Prevención y Limpieza</h3>
+                        <p class="text-sm text-gray-600 mb-4">Profilaxis profesional y odontología general para mantener su boca sana. El verdadero lujo comienza con la salud. Nuestra área de profilaxis profesional y odontología general está diseñada para quienes buscan un cuidado dental integral, preciso y estéticamente impecable. Cada consulta combina tecnología avanzada, diagnóstico especializado y una atención personalizada que prioriza tu bienestar y la armonía natural de tu sonrisa.</p>
+                        <a href="#contacto" class="text-dental-gold text-xs font-bold uppercase tracking-widest hover:underline">Más información</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA / INSTALACIONES -->
+    <section id="galeria" class="relative py-20 bg-dental-purple-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="font-serif text-3xl md:text-4xl text-dental-gold mb-6">Instalaciones de Vanguardia</h2>
+                    <p class="text-gray-300 leading-relaxed mb-6 font-light">
+                        Nuestra clínica está diseñada para ofrecer una experiencia relajante y segura. Contamos con tecnología y unidad dental ergonómicas para garantizar diagnósticos precisos y tratamientos cómodos.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center"><i class="fas fa-check text-dental-gold mr-3"></i> Esterilización </li>
+                        <li class="flex items-center"><i class="fas fa-check text-dental-gold mr-3"></i> Rayos X digitales de baja radiación</li>
+                        <li class="flex items-center"><i class="fas fa-check text-dental-gold mr-3"></i> Ambiente relajante y climatizado</li>
+                    </ul>
+                </div>
+                <!-- Imagen de Consultorio -->
+                <div class="order-1 lg:order-2">
+                    <!-- IMAGEN REEMPLAZADA 10 -->
+                    <img src="Imagen 13 png.png" alt="Consultorio Dental Moderno" class="rounded-lg shadow-2xl border-4 border-dental-gold/30">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO (Con Sistema de Reservas) -->
+    <section id="contacto" class="py-20 bg-gray-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col lg:flex-row border border-gray-100">
+                <!-- Información de Contacto -->
+                <div class="lg:w-1/2 bg-dental-purple p-10 lg:p-16">
+                    <h2 class="font-serif text-3xl text-dental-purple-dark mb-8">Nuestra Ubicación</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-white p-3 rounded-full shadow-sm text-dental-gold mr-4">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Ubicación</h4>
+                                <p class="text-gray-600">Avenida Juárez 290, Colonia Centro<br>Tlaquepaque, Jalisco. C.P 45500</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-white p-3 rounded-full shadow-sm text-dental-gold mr-4">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Teléfono</h4>
+                                <p class="text-gray-600 text-lg">3311-4814-34</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 h-64 w-full rounded-lg overflow-hidden shadow-inner border border-gray-200">
+                            <!-- Mapa Embed (Apuntando a Tlaquepaque Centro) -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.864708761271!2d-103.310!3d20.635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM4JzA2LjAiTiAxMDPCsDE4JzM2LjAiVw!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de Reserva Integrado -->
+                <div class="lg:w-1/2 p-10 lg:p-12">
+                    <div class="mb-8">
+                        <h3 class="font-serif text-3xl text-dental-purple-dark font-bold mb-2">Agendar Consulta</h3>
+                        <p class="text-gray-500">Sistema seguro de reservas para pacientes.</p>
+                    </div>
+
+                    <div class="booking-section-title">
+                        <i class="fas fa-user-circle"></i>
+                        Información Personal
+                    </div>
+
+                    <div class="form-row two-cols">
+                        <div class="form-group">
+                            <label class="form-label" for="cliente">Nombre Completo *</label>
+                            <input type="text" id="cliente" class="form-input" placeholder="Tu nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="telefono">Teléfono *</label>
+                            <div style="position: relative;">
+                                <i class="fas fa-phone input-icon"></i>
+                                <input type="tel" id="telefono" class="form-input has-icon" placeholder="1234567890">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="correo">Correo Electrónico *</label>
+                            <div style="position: relative;">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="correo" class="form-input has-icon" placeholder="tu@email.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-section-title mt-8">
+                        <i class="fas fa-clock"></i>
+                        Fecha y Hora
+                    </div>
+
+                    <div class="form-row two-cols">
+                        <div class="form-group">
+                            <label class="form-label">Fecha *</label>
+                            <button type="button" class="calendar-trigger" id="calendarTrigger">
+                                <span id="selectedDateText">Selecciona una fecha</span>
+                                <i class="fas fa-calendar-alt text-dental-gold"></i>
+                            </button>
+                            <input type="hidden" id="fecha">
+                            <div class="form-help">Haz clic para ver disponibilidad</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hora *</label>
+                            <div class="time-selector">
+                                <div class="time-display disabled" id="timeDisplay">
+                                    <span id="selectedTime">Primero selecciona fecha</span>
+                                    <i class="fas fa-chevron-down text-dental-gold"></i>
+                                </div>
+                                <div class="time-dropdown" id="timeDropdown">
+                                    <div class="time-grid" id="timeGrid"></div>
+                                </div>
+                            </div>
+                            <div class="form-help">9:00 AM - 6:00 PM</div>
+                        </div>
+                    </div>
+
+                    <div class="status-alert" id="statusAlert">
+                        <i id="statusIcon"></i>
+                        <span id="statusMessage"></span>
+                    </div>
+
+                    <button class="submit-btn mt-6" id="submitBtn" onclick="handleSubmit()">
+                        <span id="btnText">Reservar Cita</span>
+                    </button>
+                    
+                    <p class="text-center text-xs text-gray-400 mt-4">Al reservar, recibirás confirmación automática.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h2 class="font-serif text-2xl font-bold mb-2">Dra. Irma Zaragoza González</h2>
+                <p class="text-gray-400 text-sm">Especialista en Endodoncia y Prótesis Maxilofacial.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-dental-gold transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-400 hover:text-dental-gold transition"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="text-center mt-8 text-gray-600 text-xs">
+            &copy; 2024 Clínica Dental Dra. Irma Zaragoza. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/523311481434" target="_blank" class="whatsapp-float flex items-center justify-center">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal Calendar (Oculto hasta que se active) -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="calendar-modal">
+            <div class="calendar-header">
+                <h3><i class="fas fa-calendar-check"></i> Selecciona una Fecha</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="calendar-body">
+                <div class="month-navigation">
+                    <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                    <div class="current-month" id="currentMonth">Enero 2024</div>
+                    <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                </div>
+
+                <div class="calendar-loading" id="calendarLoading">
+                    <i class="fas fa-spinner loading-spinner"></i>
+                    <p>Cargando disponibilidad...</p>
+                </div>
+
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Days headers -->
+                    <div class="day-header">Dom</div>
+                    <div class="day-header">Lun</div>
+                    <div class="day-header">Mar</div>
+                    <div class="day-header">Mié</div>
+                    <div class="day-header">Jue</div>
+                    <div class="day-header">Vie</div>
+                    <div class="day-header">Sáb</div>
+                    <!-- Calendar days will be inserted here -->
+                </div>
+
+                <div class="calendar-legend">
+                    <div class="legend-item">
+                        <div class="legend-color available"></div>
+                        <span>Disponible</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color partial"></div>
+                        <span>Parcial</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color busy"></div>
+                        <span>Ocupado</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color weekend"></div>
+                        <span>Fin de semana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts unificados -->
+    <script>
+        /* === Lógica General de la Web (Menú y Scroll) === */
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+
+        /* === Lógica del Sistema de Reservas Integrado === */
+        const WEBHOOK_RESERVA = 'https://hook.us2.make.com/29ig294qdt2u3fp3bavnj4kwv8bc8euw';
+        const WEBHOOK_CONSULTA = 'https://hook.us2.make.com/t6jc6qtdcsolarq2ahqwitamrxrjashx';
+
+        let formData = {
+            cliente: '',
+            telefono: '',
+            correo: '',
+            fecha: '',
+            hora: ''
+        };
+
+        let currentMonth = new Date();
+        let selectedDate = null;
+        let availabilityCache = {};
+
+        document.addEventListener('DOMContentLoaded', function () {
+            initBookingListeners();
+            renderCalendar();
+        });
+
+        function initBookingListeners() {
+            // Inputs
+            document.getElementById('cliente').addEventListener('input', (e) => {
+                formData.cliente = e.target.value;
+            });
+
+            document.getElementById('telefono').addEventListener('input', (e) => {
+                const formatted = formatPhone(e.target.value);
+                e.target.value = formatted;
+                formData.telefono = formatted.replace(/\D/g, ''); 
+            });
+
+            document.getElementById('correo').addEventListener('input', (e) => {
+                formData.correo = e.target.value;
+            });
+
+            // Modal y controles
+            document.getElementById('calendarTrigger').addEventListener('click', openCalendarModal);
+            document.getElementById('closeModal').addEventListener('click', closeCalendarModal);
+            document.getElementById('modalOverlay').addEventListener('click', (e) => {
+                if (e.target.id === 'modalOverlay') closeCalendarModal();
+            });
+
+            document.getElementById('prevMonth').addEventListener('click', () => changeMonth(-1));
+            document.getElementById('nextMonth').addEventListener('click', () => changeMonth(1));
+
+            document.getElementById('timeDisplay').addEventListener('click', toggleTimeDropdown);
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.time-selector')) {
+                    closeTimeDropdown();
+                }
+            });
+        }
+
+        function openCalendarModal() {
+            document.getElementById('modalOverlay').classList.add('active');
+            renderCalendar();
+        }
+
+        function closeCalendarModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        function changeMonth(direction) {
+            currentMonth.setMonth(currentMonth.getMonth() + direction);
+            renderCalendar();
+        }
+
+        async function renderCalendar() {
+            const year = currentMonth.getFullYear();
+            const month = currentMonth.getMonth();
+
+            const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
+
+            const today = new Date();
+            const isPastMonth = year < today.getFullYear() ||
+                (year === today.getFullYear() && month < today.getMonth());
+            document.getElementById('prevMonth').disabled = isPastMonth;
+
+            const isFutureLimit = year > 2026 || (year === 2026 && month > 11);
+            document.getElementById('nextMonth').disabled = isFutureLimit;
+
+            const grid = document.getElementById('calendarGrid');
+            const headers = grid.querySelectorAll('.day-header');
+            grid.innerHTML = '';
+            headers.forEach(h => grid.appendChild(h));
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            document.getElementById('calendarLoading').classList.add('active');
+
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day empty';
+                grid.appendChild(emptyDay);
+            }
+
+            await loadMonthAvailability(year, month);
+            document.getElementById('calendarLoading').classList.remove('active');
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+
+                const dateObj = new Date(year, month, day);
+                const dateString = formatDateToISO(dateObj);
+
+                const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                if (dateObj < todayStart) {
+                    dayElement.classList.add('past');
+                }
+                else if (dateObj.getDay() === 0 || dateObj.getDay() === 6) {
+                    dayElement.classList.add('weekend');
+                }
+                else {
+                    const availability = availabilityCache[dateString];
+                    if (availability) {
+                        if (availability.status === 'available') {
+                            dayElement.classList.add('available');
+                        } else if (availability.status === 'partial') {
+                            dayElement.classList.add('partial');
+                        } else {
+                            dayElement.classList.add('busy');
+                        }
+
+                        if (availability.status !== 'busy') {
+                            dayElement.addEventListener('click', () => selectDate(dateObj, availability));
+                        }
+                    } else {
+                        dayElement.classList.add('available');
+                        dayElement.addEventListener('click', () => selectDate(dateObj, null));
+                    }
+                }
+
+                if (selectedDate &&
+                    dateObj.getDate() === selectedDate.getDate() &&
+                    dateObj.getMonth() === selectedDate.getMonth() &&
+                    dateObj.getFullYear() === selectedDate.getFullYear()) {
+                    dayElement.classList.add('selected');
+                }
+
+                grid.appendChild(dayElement);
+            }
+        }
+
+        async function loadMonthAvailability(year, month) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const datesToCheck = [];
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateObj = new Date(year, month, day);
+                const dayOfWeek = dateObj.getDay();
+
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (dateObj >= today && dayOfWeek !== 0 && dayOfWeek !== 6) {
+                    datesToCheck.push(formatDateToISO(dateObj));
+                }
+            }
+
+            for (const dateString of datesToCheck) {
+                if (!availabilityCache[dateString]) {
+                    await checkDateAvailability(dateString);
+                }
+            }
+        }
+
+        async function checkDateAvailability(dateString) {
+            try {
+                const response = await fetch(WEBHOOK_CONSULTA, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'check_availability', date: dateString })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    availabilityCache[dateString] = {
+                        status: data.status || 'available',
+                        availableSlots: data.availableSlots || [],
+                        occupiedSlots: data.occupiedSlots || []
+                    };
+                } else {
+                    availabilityCache[dateString] = {
+                        status: 'available',
+                        availableSlots: generateDefaultSlots(),
+                        occupiedSlots: []
+                    };
+                }
+            } catch (error) {
+                availabilityCache[dateString] = {
+                    status: 'available',
+                    availableSlots: generateDefaultSlots(),
+                    occupiedSlots: []
+                };
+            }
+        }
+
+        function selectDate(dateObj, availability) {
+            selectedDate = dateObj;
+            formData.fecha = formatDateToISO(dateObj);
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateText = dateObj.toLocaleDateString('es-MX', options);
+            document.getElementById('selectedDateText').textContent = dateText;
+            document.getElementById('calendarTrigger').classList.add('selected');
+            document.getElementById('fecha').value = formData.fecha;
+
+            const timeDisplay = document.getElementById('timeDisplay');
+            timeDisplay.classList.remove('disabled');
+            timeDisplay.querySelector('span').textContent = 'Selecciona una hora';
+
+            loadAvailableTimes(availability);
+            closeCalendarModal();
+            formData.hora = '';
+        }
+
+        function loadAvailableTimes(availability) {
+            const timeGrid = document.getElementById('timeGrid');
+            timeGrid.innerHTML = '';
+
+            const slots = availability?.availableSlots || generateDefaultSlots();
+            const occupiedSlots = availability?.occupiedSlots || [];
+
+            const morningSlots = slots.filter(s => parseInt(s.split(':')[0]) < 12);
+            if (morningSlots.length > 0) {
+                const morningLabel = document.createElement('div');
+                morningLabel.className = 'period-label';
+                morningLabel.textContent = 'Mañana';
+                timeGrid.appendChild(morningLabel);
+                morningSlots.forEach(slot => addTimeOption(timeGrid, slot, occupiedSlots));
+            }
+
+            const afternoonSlots = slots.filter(s => parseInt(s.split(':')[0]) >= 12);
+            if (afternoonSlots.length > 0) {
+                const afternoonLabel = document.createElement('div');
+                afternoonLabel.className = 'period-label';
+                afternoonLabel.textContent = 'Tarde';
+                timeGrid.appendChild(afternoonLabel);
+                afternoonSlots.forEach(slot => addTimeOption(timeGrid, slot, occupiedSlots));
+            }
+        }
+
+        function addTimeOption(container, time, occupiedSlots) {
+            const option = document.createElement('div');
+            option.className = 'time-option';
+            option.textContent = time;
+
+            if (occupiedSlots.includes(time)) {
+                option.classList.add('occupied');
+            } else {
+                option.addEventListener('click', (e) => selectTime(time, e));
+            }
+            container.appendChild(option);
+        }
+
+        function selectTime(time, event) {
+            formData.hora = time;
+            document.getElementById('selectedTime').textContent = time;
+
+            document.querySelectorAll('.time-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+
+            closeTimeDropdown();
+        }
+
+        function toggleTimeDropdown() {
+            const display = document.getElementById('timeDisplay');
+            if (display.classList.contains('disabled')) return;
+
+            const dropdown = document.getElementById('timeDropdown');
+            if (dropdown.classList.contains('open')) {
+                closeTimeDropdown();
+            } else {
+                display.classList.add('active');
+                dropdown.classList.add('open');
+            }
+        }
+
+        function closeTimeDropdown() {
+            document.getElementById('timeDisplay').classList.remove('active');
+            document.getElementById('timeDropdown').classList.remove('open');
+        }
+
+        function generateDefaultSlots() {
+            const slots = [];
+            for (let hour = 9; hour <= 17; hour++) {
+                slots.push(`${hour.toString().padStart(2, '0')}:00`);
+                if (hour < 17) {
+                    slots.push(`${hour.toString().padStart(2, '0')}:30`);
+                }
+            }
+            return slots;
+        }
+
+        function formatPhone(value) {
+            const cleaned = value.replace(/\D/g, '').slice(0, 10);
+            if (cleaned.length <= 3) return cleaned;
+            if (cleaned.length <= 5) return `${cleaned.slice(0, 3)}-${cleaned.slice(3)}`;
+            if (cleaned.length <= 7) return `${cleaned.slice(0, 3)}-${cleaned.slice(3, 5)}-${cleaned.slice(5)}`;
+            return `${cleaned.slice(0, 3)}-${cleaned.slice(3, 5)}-${cleaned.slice(5, 7)}-${cleaned.slice(7, 10)}`;
+        }
+
+        function formatDateToISO(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function showStatus(type, message) {
+            const alert = document.getElementById('statusAlert');
+            const icon = document.getElementById('statusIcon');
+            const text = document.getElementById('statusMessage');
+
+            alert.className = `status-alert ${type} show`;
+            text.textContent = message;
+
+            const icons = {
+                loading: 'fa-spinner fa-spin',
+                success: 'fa-check-circle',
+                warning: 'fa-exclamation-triangle',
+                error: 'fa-times-circle'
+            };
+            icon.className = `fas ${icons[type]}`;
+
+            if (type !== 'loading') {
+                setTimeout(() => { alert.classList.remove('show'); }, 5000);
+            }
+        }
+
+        function validateForm() {
+            const errors = [];
+            if (!formData.cliente.trim()) errors.push('El nombre es requerido');
+            if (!formData.telefono || formData.telefono.length !== 10) errors.push('El teléfono debe tener 10 dígitos');
+            if (!formData.correo.trim() || !isValidEmail(formData.correo)) errors.push('El correo electrónico no es válido');
+            if (!formData.fecha) errors.push('Debes seleccionar una fecha');
+            if (!formData.hora) errors.push('Debes seleccionar una hora');
+            return errors;
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        async function handleSubmit() {
+            const errors = validateForm();
+            if (errors.length > 0) {
+                showStatus('error', errors[0]);
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+            showStatus('loading', 'Enviando tu solicitud de reserva...');
+
+            try {
+                const response = await fetch(WEBHOOK_RESERVA, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        cliente: formData.cliente,
+                        telefono: formData.telefono,
+                        correo: formData.correo,
+                        fecha: formData.fecha,
+                        hora: formData.hora,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+
+                if (!response.ok) {
+                    try {
+                        const errorData = await response.json();
+                        showStatus('warning', errorData.mensaje || 'El horario seleccionado no está disponible.');
+                    } catch {
+                        showStatus('warning', 'El horario seleccionado no está disponible.');
+                    }
+                    return;
+                }
+
+                const result = await response.json();
+                if (result.disponible === true) {
+                    showStatus('success', result.mensaje || '¡Reserva confirmada! Recibirás un correo de confirmación.');
+                    setTimeout(() => { resetForm(); }, 5000);
+                } else {
+                    showStatus('warning', result.mensaje || 'El horario seleccionado no está disponible.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showStatus('error', 'Hubo un error al procesar tu reserva. Por favor intenta de nuevo.');
+            } finally {
+                submitBtn.disabled = false;
+                btnText.textContent = 'Reservar Cita';
+            }
+        }
+
+        function resetForm() {
+            formData = { cliente: '', telefono: '', correo: '', fecha: '', hora: '' };
+            document.getElementById('cliente').value = '';
+            document.getElementById('telefono').value = '';
+            document.getElementById('correo').value = '';
+            document.getElementById('fecha').value = '';
+            document.getElementById('selectedDateText').textContent = 'Selecciona una fecha';
+            document.getElementById('calendarTrigger').classList.remove('selected');
+            document.getElementById('selectedTime').textContent = 'Primero selecciona fecha';
+            document.getElementById('timeDisplay').classList.add('disabled');
+            selectedDate = null;
+        }
+    </script>
+</body>
+</html>
